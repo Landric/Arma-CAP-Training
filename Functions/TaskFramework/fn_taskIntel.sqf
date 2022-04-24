@@ -163,7 +163,9 @@ _intelGrammar = createHashMapFromArray [
 	["at", ["at", "in the vicinity of"]],
 	["required", ["required", "requested", "needed", "wanted"]],
 
-	["composition", ["expected composition is #units#", "reports indicate composition is #units#"]],
+	["composition", ["#expected# composition is #units#", "reports indicate composition is #units#"]],
+	["expected", ["expected", "reported", "suspected"]],
+
 	["units", _composition],
 
 	["2", ["two",   "#multiple#"]],
