@@ -1,6 +1,6 @@
 # Arma CAP Training
 
-A simple Arma scenario for practicing Combat Air Patrol (and optionally, Suppression of Enemy Air Defences) across an endless number of missions.
+A simple Arma scenario for practicing Combat Air Patrols across an endless number of missions.
 
 To tweak the Scenario's difficulty (e.g. time of day, resupply availability, generated mission types, etc.) run as a multiplayer game and change the scenario Parameters.
 
