@@ -1,7 +1,7 @@
 author			= "Landric";
 onLoadName		= "Landric's CAP Training";
 onLoadMission	= "Hone your skills in a variety of aircraft by completing an endless number of combat-air-patrol tasks.";
-
+loadScreen 		= "cap_loading.jpg";
 
 class CfgFunctions
 {
