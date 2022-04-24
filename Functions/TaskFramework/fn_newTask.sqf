@@ -28,7 +28,7 @@ if(LND_intel >= 4) then { systemChat format["Generating task #%1...", LND_taskCo
 
 _whitelist = ([15000] call LND_fnc_getPlayerPositions);
 _blacklist = [LND_safeZone];
-_blacklist append ([2000] call LND_fnc_getPlayerPositions);
+_blacklist append ([5000] call LND_fnc_getPlayerPositions);
 _position = [_whitelist, _blacklist] call BIS_fnc_randomPos;
 
 [_position] call selectRandom LND_taskTypes;
