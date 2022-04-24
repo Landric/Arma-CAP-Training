@@ -90,8 +90,8 @@ private _group = createGroup east;
 		_trg setTriggerStatements 
 		[
 			"((thisTrigger getVariable ""_task"") call BIS_fnc_taskExists) and (((not canFire (thisTrigger getVariable ""_v"")) and (not canMove (thisTrigger getVariable ""_v""))) or ({alive _x} count crew (thisTrigger getVariable ""_v"") <= 0))",
-			"[(thisTrigger getVariable ""_task""), ""SUCCEEDED""] call BIS_fnc_taskSetState",
-			"deleteVehicle thisTrigger"
+			"[(thisTrigger getVariable ""_task""), ""SUCCEEDED""] call BIS_fnc_taskSetState; deleteVehicle thisTrigger",
+			""
 		];
 	};
 } forEach _vehicles;

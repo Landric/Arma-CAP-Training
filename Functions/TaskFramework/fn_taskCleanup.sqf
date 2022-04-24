@@ -46,7 +46,14 @@ if (not (format ["tsk%1", LND_taskCounter] call BIS_fnc_taskCompleted)) then {
 	LND_ffIncidents = 0;
 
 	[] spawn {
-		sleep 3;
+		sleep 2;
+		if(({((getPosATL _x) select 2) > 30} count allPlayers) == 0) then {
+			["tsk0", "ASSIGNED", true] call BIS_fnc_taskSetState;
+		};
+		waitUntil {
+			sleep 1;
+			({((getPosATL _x) select 2) > 30} count allPlayers) > 0
+		};
 		call LND_fnc_newTask;
 	};
 };

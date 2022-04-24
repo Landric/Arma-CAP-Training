@@ -52,6 +52,19 @@ private _taskIcon = if(LND_intel > 0) then { "attack" } else { "" };
 private _taskTitle = if(LND_intel > 0) then { "Intercept enemy CAP" } else { "Combat Air Patrol" };
 private _task = [true, format ["tsk%1", LND_taskCounter], ["", _taskTitle, _position],  objNull, true, -1, true, _taskIcon] call BIS_fnc_taskCreate;
 
+
+private _trg = createTrigger ["EmptyDetector", _position, false];
+_trg setTriggerArea [0, 0, 0, false];
+_trg setVariable ["_task", _task];
+_trg setTriggerStatements 
+[
+	"({((getPosATL _x) select 2) > 30} count allPlayers) == 0",
+	"[""FAILED""] call LND_fnc_taskCleanup; deleteVehicle thisTrigger",
+	""
+];
+
+
+
 {
 	private _opforAircraft = [];
 	for "_i" from 1 to ([1,3] call BIS_fnc_randomInt) do {

@@ -34,7 +34,7 @@ LND_taskTypes = [];
 if(LND_difficulty >= 1 and (count LND_opforTransportHelo > 0 or count LND_opforTransportPlane > 0)) then { LND_taskTypes pushBack LND_fnc_taskTransport };
 if(LND_difficulty >= 2 and count LND_taskTypes == 0 and count LND_opforHeloLight > 0) then { LND_taskTypes pushBack LND_fnc_taskTransport };
 if(LND_difficulty >= 3 and (count LND_opforHeloAttack > 0 or count LND_opforCAS > 0)) then { LND_taskTypes pushBack LND_fnc_taskCAS; LND_taskTypes pushBack LND_fnc_taskCAS };
-if(LND_difficulty >= 4 and count LND_opforCAP > 0) then { LND_taskTypes pushBack LND_fnc_taskCAP; LND_taskTypes pushBack LND_fnc_taskCAP };
+if(LND_difficulty >= 4 and count LND_opforCAP > 0) then { LND_taskTypes pushBack LND_fnc_taskCAP; LND_taskTypes pushBack LND_fnc_taskCAP; LND_taskTypes pushBack LND_fnc_taskCAP };
 
 LND_taskCounter = 0;
 LND_smoke = objNull;
@@ -86,5 +86,22 @@ if(count LND_taskTypes == 0) then {
 	systemChat "(Or just enjoy flying around!)";
 }
 else {
-	call LND_fnc_newTask;
+
+	_task = [true, "tsk0", ["Take off, and climb to at least 30m ASL", "Take Off", "respawn_start"], getMarkerPos "respawn_start", true, -1, false, "takeoff"] call BIS_fnc_taskCreate;
+	_trg = createTrigger ["EmptyDetector", getMarkerPos "respawn_start", false];
+	_trg setTriggerArea [0, 0, 0, false];
+	_trg setTriggerStatements 
+	[
+		"({((getPosATL _x) select 2) > 30} count allPlayers) > 0",
+		"[""tsk0"", ""SUCCEEDED""] call BIS_fnc_taskSetState;",
+		""
+	];
+
+	[] spawn {
+		waitUntil {
+			sleep 1;
+			({((getPosATL _x) select 2) > 30} count allPlayers) > 0
+		};
+		call LND_fnc_newTask;
+	};
 };
