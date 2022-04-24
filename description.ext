@@ -1,0 +1,145 @@
+author			= "Landric";
+onLoadName		= "Landric's CAP Training";
+onLoadMission	= "Hone your skills in a variety of aircraft by completing an endless number of combat-air-patrol tasks.";
+
+
+class CfgFunctions
+{
+	class LND
+	{
+		class ModLoading
+		{
+			class loadVehicles {};
+			class loadFactions {};
+		};
+		class TaskFramework
+		{
+			class newTask {};
+			class taskTransport {};
+			class taskCAS {};
+			class taskCAP {};
+			class taskSuccessCheck {};
+			class taskCleanup {};
+			class taskIntel {};
+			class spawnOpfor {};
+		};
+		class Utilities
+		{
+			class garrisonBuilding {};
+			class groupName {};
+			class getPlayerPositions {};
+			class parseGrammar {};
+			class getRadioName {};
+		};
+	};
+};
+
+
+class Params
+{
+	class Daytime
+	{
+		title = "Time of day";
+		texts[] = {"Morning","Noon","Evening","Midnight"};
+		values[] = {6,12,18,0};
+		default = 12;
+		function = "BIS_fnc_paramDaytime";
+	};
+
+	class Weather
+	{
+		title = "Weather";
+		texts[] = {"Clear","Overcast","Rain","Storm"};
+		values[] = {0,70,90,100};
+		default = 0;
+		function = "BIS_fnc_paramWeather";
+	};
+
+	class PlayerDamage
+	{
+		title = "Damage to players";
+		texts[] = {"Enabled", "Reduced", "Disabled"};
+		values[] = {2, 1, 0};
+		default = 2;
+	};
+
+	class PlayerVehicleDamage
+	{
+		title = "Damage to player vehicles";
+		texts[] = {"Enabled", "Reduced", "Disabled"};
+		values[] = {2, 1, 0};
+		default = 2;
+	};
+
+	class BLUFORFaction
+	{
+		title = "BLUFOR";
+		texts[] = {"NATO"};
+		values[] = {0};
+		default = 0;
+	};
+
+	class OPFORFaction
+	{
+		title = "OPFOR";
+		texts[] = {"CSAT", "AAF", "MDF (Requires 3CB)", "AFRF (Requires RHS: AFRF)"};
+		values[] = {0,1,2,3};
+		default = 0;
+	};
+
+	// class AAA
+	// {
+	// 	title = "AAA Density";
+	// 	texts[] = {"None","Minor","Medium","Major"};
+	// 	values[] = {0,5,10,20};
+	// 	default = 0;
+	// };
+
+	// class SAM
+	// {
+	// 	title = "SAM Density";
+	// 	texts[] = {"None","Minor","Medium","Major"};
+	// 	values[] = {0,10,50,80};
+	// 	default = 0;
+	// };
+
+	// class AARefresh
+	// {
+	// 	title = "AA sites move after X missions";
+	// 	texts[] = {"Never","1","2","3","4","5","6"};
+	// 	values[] = {-1,1,2,3,4,5,6};
+	// 	default = 2;
+	// };
+
+	class Intel
+	{
+		title = "Intel picture";
+		texts[] = {"None","Sparse","Moderate","Maximal","Excessive (Debug)"};
+		values[] = {0,1,2,3,4};
+		default = 3;
+	};
+
+	class MissionCAP
+	{
+		title = "CAP Missions";
+		texts[] = {"Unarmed Aircraft Only", "Up to Armed Transports", "Up to Hostile CAS", "Up to Hostile CAP"};
+		values[] = {1,2,3,4};
+		default = 4;
+	};
+
+	class RespawnOnDemand
+	{
+		title = "Respawn on demand";
+		texts[] = {"Disabled", "Enabled"};
+		values[] = {0,1};
+		default = 1;
+	};
+
+	class RepairOnDemand
+	{
+		title = "Repair/Resupply on demand";
+		texts[] = {"Disabled", "Enabled"};
+		values[] = {0,1};
+		default = 1;
+	};
+};
